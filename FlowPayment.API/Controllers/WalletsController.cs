@@ -1,0 +1,32 @@
+using Microsoft.AspNetCore.Mvc;
+using FlowPayment.Application.DTOs;
+using FlowPayment.Application.Interfaces;
+
+namespace FlowPayment.API.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class WalletsController : ControllerBase
+    {
+        private readonly IWalletService _walletService;
+
+        public WalletsController(IWalletService walletService)
+        {
+            _walletService = walletService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateWallet([FromBody] CreateWalletDto dto)
+        {
+            try
+            {
+                var result = await _walletService.CreateWalletAsync(dto);
+                return CreatedAtAction(nameof(CreateWallet), new { id = result.Id }, result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+    }
+}
