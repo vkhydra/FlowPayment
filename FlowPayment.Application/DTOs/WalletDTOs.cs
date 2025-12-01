@@ -7,4 +7,5 @@ namespace FlowPayment.Application.DTOs
     public record WalletResponseDto(Guid Id, decimal CurrentBalance, Guid UserId);
 
     public record DepositDto(Guid WalletId, decimal Amount);
+    public record TransferDto(Guid SenderId, Guid ReceiverId, decimal Amount);
 }

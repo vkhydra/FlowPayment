@@ -7,5 +7,6 @@ namespace FlowPayment.Application.Interfaces
     {
         Task<WalletResponseDto> CreateWalletAsync(CreateWalletDto dto);
         Task<WalletResponseDto> DepositAsync(DepositDto dto);
+        Task<WalletResponseDto> TransferAsync(TransferDto dto);
     }
 }

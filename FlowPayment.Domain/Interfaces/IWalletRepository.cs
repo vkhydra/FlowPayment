@@ -9,5 +9,8 @@ namespace FlowPayment.Domain.Interfaces
         Task CreateAsync(Wallet wallet);
         Task<Wallet?> GetByIdAsync(Guid id);
         Task UpdateAsync(Wallet wallet);
+        Task BeginTransactionAsync();
+        Task CommitTransactionAsync();
+        Task RollbackTransactionAsync();
     }
 }
