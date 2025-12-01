@@ -28,5 +28,19 @@ namespace FlowPayment.API.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        [HttpPost("deposit")]
+        public async Task<IActionResult> DepositWallet([FromBody] DepositDto dto)
+        {
+            try
+            {
+                var result = await _walletService.DepositAsync(dto);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
     }
 }
